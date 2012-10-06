@@ -43,7 +43,9 @@
                                 (key-binding (read-kbd-macro x))))
                            (when (string-match
                                   (or match jknav-search-key-pattern)
-                                  (symbol-name binding))
+                                  (if (symbolp binding)
+                                      (symbol-name binding)
+                                    ""))
                              binding)))
                        (cond ((listp key) key)
                              ((stringp key)
